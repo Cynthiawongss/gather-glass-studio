@@ -64,6 +64,7 @@ function loadDraft() {
 
 function refreshLook(snap = false) {
   document.body.dataset.kind = entry();
+  syncKinds();
   if (entry() === 'tree' && S.tool === 'petal') S.tool = 'thread';
   if (entry() === 'flower' && S.tool === 'thread') S.tool = 'petal';
   stage.setKind(S.piece.kind);
@@ -374,6 +375,10 @@ function syncTools() {
   $('toolThread').setAttribute('aria-checked', String(S.tool === 'thread'));
   $('toolDot').setAttribute('aria-checked', String(S.tool === 'dot'));
   $('starBtn').setAttribute('aria-pressed', String(isWind() && S.piece.star !== null));
+  syncKinds();
+}
+// 顶部三个入口的高亮：吹制也要更新，否则在 Blow 里没有一个亮，或者从 Tree 切回来时 Tree 还亮着
+function syncKinds() {
   for (const k of ['blow', 'tree', 'flower']) $(`kind_${k}`).setAttribute('aria-checked', String(entry() === k));
 }
 $('toolThread').addEventListener('click', () => { if (entry() !== 'tree') return; S.tool = 'thread'; syncTools(); showFrame(); });

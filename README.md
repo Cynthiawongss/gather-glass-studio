@@ -70,7 +70,6 @@ The flower below was made the same way: five long rose petals, five shorter ones
 | Simplified glass | Heat, cooling and shaping are tuned to feel right, not to teach the craft. The winding speed and thread behaviour are estimates that no one has tested by hand yet. |
 | Not yet tried everywhere | Checked in desktop Chromium. Safari, a real trackpad pinch, sound on real speakers and phones have not been tried. |
 | Needs the internet | three.js and the fonts load from the web. |
-| Analytics on the published site | The live site loads Umami to count page views. |
 
 ## Run it locally
 
