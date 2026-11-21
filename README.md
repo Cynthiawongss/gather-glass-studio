@@ -1,99 +1,93 @@
 # Gather
 
-a little glass studio：在网页上烧玻璃。一个产品，两种做法：**Blow** 在吹管上吹一只小瓶，**Wind** 在火上把玻璃拉成丝绕成一棵树，或者一片片拉出花瓣做一朵花。做完放上自己的陈列架。
+English · [简体中文](README.zh-CN.md)
 
-## 运行
+**A little glass studio in your browser. Blow a small vessel, wind a spun-glass Christmas tree, or pull a glass flower petal by petal, then name it and keep it on your shelf.**
 
-不需要安装任何东西，只要有 Python 3 和网络（three.js 从 CDN 加载）。
+[Open the studio →](https://cynthiawongss.com/gather-glass-studio/)
+
+![On the left, a vessel still on the pipe at 990 °C, glowing orange. On the right, three finished pieces after cooling: the same vessel in sea blue with a swirl, a green spun-glass tree with beads and a star, and a pink flower with a leaf](docs/cover.png)
+
+*Every piece here was made by hand in the live app and captured with the interface hidden. The vessel on the left and the blue one beside it are the same piece, before and after cooling.*
+
+Most glass games in the browser lean towards simulation: scores, orders, a dozen tools. Gather is about one thing: making a piece you like enough to keep. You heat the glass, shape it with your own hands, knock it off when it feels right, and it waits on your shelf.
+
+## Why it looks like this
+
+| Idea | What you see |
+| --- | --- |
+| Hot glass hides its colour | While you work, every piece glows orange. The colour you picked only shows after **Knock off & cool**: "Colours hide while the glass glows, and here they are." |
+| The room follows the glass | The whole interface is warm by the furnace, with a tomato-red accent, and turns calm and bottle green once the piece has cooled. |
+| The piece is the screen | The glass fills the window. Colours, the thermometer and the tools sit around the edges like paper tags. |
+| Real craft, simplified | The steps come from real glassblowing (gather, reheat, blow, shape, knock off, cool slowly) and from how lampworkers wind a spun-glass tree onto a cone frame. Fresh thread glows orange-red for a moment, and each thread ends in a small drop. Temperatures and timings are simplified; this is not a lesson in glassworking. |
+| Made by hand | There is no AI anywhere in Gather. Every shape comes from your pointer. |
+
+| While it glows | After cooling |
+| --- | --- |
+| ![A teardrop vessel on the pipe, glowing orange at 990 °C, in a warm orange studio](docs/02-vessel-hot.jpg) | ![The same vessel after cooling: sea blue with dark blue swirls, on a cream stand, with the studio turned soft green and a field to name it](docs/03-vessel-cooled.jpg) |
+
+## Three ways to make
+
+| Workshop | What you do | What you keep |
+| --- | --- | --- |
+| **Blow** · a vessel on the pipe | Pick one of 9 colours and a pattern (**Plain**, **Frit** or **Swirl**). Hold **Reheat** to soften the glass and **Blow** to inflate it. Drag its side outward to belly it or inward to pinch a waist; drag the base to stretch it. | A small blown vessel in your own proportions |
+| **Tree** · wind threads on a frame | A cone frame stands on the rod. Hold beside it with **Thread** and glass winds on at the height of your pointer, about five turns a second. Move slowly up and down to build layers; change colour whenever you like. Add beads with **Dot** and finish with a **Star**. | A spun-glass Christmas tree made of hundreds of turns of thread |
+| **Flower** · pull petals on a stem | With **Petal**, press on the stem and drag outward: the farther you drag, the longer the petal; drag upward to cup it. Let go and the stem turns for the next one, so five make a flower and the next five fall into the gaps. Dot the centre, then pull green petals lower down for leaves. | A glass flower shaped one petal at a time |
+
+The glass cools as you work. A thermometer shows the temperature and whether it is **runny**, **just right** or **too stiff**; when it stiffens, reheat. Too hot, and a vessel starts to droop. In the tree, hot glass gives hair-fine threads and cooling glass gives thick ones.
+
+## An example: a Christmas tree
+
+This fictional tree took about 35 seconds of winding in the live app.
+
+1. Choose **Tree** and the **Pine** colour. Hold **Reheat**, then hold beside the frame with **Thread** and move slowly from the bottom to the top and back. Linger in a few places and the thread builds a ledge there, like the tiers of a tree.
+2. Switch to **Dot** and click the tree to add beads in **Berry**, **Amber**, **Sea** and **Clear**.
+3. Pick **Clear** and press **Star**. A clear star comes out golden.
+4. **Knock off & cool**, then name it and **Place on shelf**.
+
+| At the flame | Cooled and standing |
+| --- | --- |
+| ![The tree in the workshop: green wound threads on the cone frame, beads, a golden star, the colour tray on the left and the thermometer at 980 °C on the right](docs/01-tree-workshop.jpg) | ![The finished tree after cooling, in the green studio, ready to be named](docs/04-tree-cooled.jpg) |
+
+The flower below was made the same way: five long rose petals, five shorter ones in the gaps, one green leaf and an amber centre.
+
+![A finished pink glass flower with two rows of petals and an amber centre, seen slightly from above](docs/05-flower-cooled.jpg)
+
+## Keep it
+
+- **Place on shelf** keeps the piece in this browser. Open the **Shelf** to turn a piece around, rework it, delete it, or **Save as card**, which downloads a 1080 × 1350 PNG with its name and date.
+- A piece you are still making is saved as a draft. Refresh or close the page and it is waiting when you come back.
+- Switching workshop starts a new piece, so place the current one on the shelf first.
+- Keys: hold **F** to reheat, hold **Space** to blow, **⌘Z** to undo.
+- The interface is in English and Chinese.
+
+## Limits
+
+| Current behaviour | What it means |
+| --- | --- |
+| Stored in this browser only | No account or sync. Clearing site data or changing browser empties the shelf. |
+| "3 free pieces" is a demo | The counter lives in your browser. The unlock button in the dialog charges nothing; no payment is connected. |
+| Simplified glass | Heat, cooling and shaping are tuned to feel right, not to teach the craft. The winding speed and thread behaviour are estimates that no one has tested by hand yet. |
+| Not yet tried everywhere | Checked in desktop Chromium. Safari, a real trackpad pinch, sound on real speakers and phones have not been tried. |
+| Needs the internet | three.js and the fonts load from the web. |
+| Analytics on the published site | The live site loads Umami to count page views. |
+
+## Run it locally
 
 ```bash
 python3 -m http.server 5178 --bind 127.0.0.1
 ```
 
-然后用 Chrome 或 Safari 打开 http://localhost:5178 。没有构建步骤，也没有依赖锁文件：唯一的依赖 three.js 在 `index.html` 的 importmap 里钉死为 0.187.0。
+Then open http://localhost:5178/ in Chrome or Safari. There is no build step; three.js 0.187.0 is pinned in the import map in `index.html`.
 
-## 怎么玩
-
-屏幕正上方有三个入口：Blow（吹制）、Tree（圣诞树）、Flower（花）。三者工具互不混用：树只有拉丝、点珠、星星；花只有花瓣、点珠。切换入口会放下手上还没保存的那件。
-
-### Blow：吹一只瓶
-
-| 动作 | 操作 |
-|---|---|
-| 回炉加热 | 按住 Reheat，或按住 F |
-| 吹气 | 按住 Blow，或按住空格 |
-| 拉鼓 / 收腰 | 在玻璃上按住，往外 / 往里拖 |
-| 抻长 / 墩短 | 抓着底部往下 / 往上拖 |
-| 捏细 / 撑开 | 触控板双指捏合（Chrome 和 Safari 各接了一套事件，都没在真机上试过） |
-| 撤销 | ⌘Z |
-| 定型 | Knock off & cool，然后起名、放上陈列架 |
-
-### Tree 和 Flower
-
-| 动作 | 操作 |
-|---|---|
-| 拉丝缠绕 | 选 Thread。树干上先立着一个玻璃条搭的锥形骨架，这就是树的形状。在旁边按住不放，丝以每秒约 5 圈的速度贴着骨架缠上去，指针只决定缠到多高。慢慢上下移动，每走一遍多叠一层：几圈时看得到骨架，上百圈盖满，再往上越叠越厚，停留久的地方会鼓出一层檐 |
-| 丝的粗细 | 料棒刚烧透时拉出头发丝，变凉时拉出粗带；指针移得快丝也会变细 |
-| 换颜色 | 随时点左边的料色，已经缠上去的不变 |
-| 拉花瓣 | 选 Petal，在树干上按住往外拖：拖多远花瓣就多长，往上拖就往上兜。松手后树干自己转过五分之二圈，五片正好均匀围成一朵；下一层会自动落在上一层的缝里。玻璃越软花瓣越圆，快凉时压出来是窄长的 |
-| 花蕊 | 选 Dot，在花心点一下（点在花心的珠子会大一些） |
-| 叶子 | 换成绿色，在树干低一点的地方拉花瓣 |
-| 点小珠 | 选 Dot，在树上单击 |
-| 星星 | 点 Star，再点一次取下 |
-| 回炉 | 按住 Reheat 或 F，把料棒头重新烧软 |
-
-一根料棒大约能缠 890 圈，用完会提示。每圈带六个棱角，因为是绕在六根棱的骨架上。在已经拉过花瓣的花茎上拉丝时没有骨架，指针离多远就绕多宽。每根丝松手时，丝尾会留下一颗小水滴。刚拉出的丝是橙红的，一两秒后淡回本色。
-
-### 两种做法共用的
-
-玻璃会自己变凉，凉了拉不动，要回炉。烧过头料会往下坠。右上角可以切换中文。
-
-做到一半刷新或关掉页面，回来会接着上次的草稿。成品可以存成一张 4:5 的作品卡片（Save as card）。
-
-## 文件
-
-- `src/model.js` 作品数据和塑形规则（纯函数）
-- `src/stage.js` three.js 场景、玻璃几何和材质
-- `src/main.js` 状态机、输入、界面
-- `src/store.js` 陈列架和额度（localStorage）
-- `src/coil.js` 把一串路径点扫成细玻璃丝的网格
-- `lab/coil.html` 调缠丝画面用的实验页，不是产品的一部分
-- `src/audio.js` 现场合成的三种声音
-- `src/i18n.js` 中英文案
-- `research/research.md` 调研记录和首版决定
-
-## 这一版是什么，不是什么
-
-- 作品和额度只存在这台电脑的这个浏览器里。清除浏览器数据或换浏览器就会重置。
-- "3 件免费"是演示用的本地计数。弹窗里的解锁按钮不发生任何付款。正式收费需要账户、服务端额度校验和支付渠道，都还没做。
-- 没有任何 AI 功能。
-- 温度、冷却速度、退火时间都是简化的，不是工艺教学。
-
-## 测过什么
-
-在 Claude 桌面应用的内置浏览器（Chromium）里，1280×800 视口，用脚本和模拟的鼠标拖动测过：
-
-- 吹气、拖动拉鼓、抻长都改变了保存下来的几何数据
-- 定型 → 起名 → 保存 → 刷新后作品和额度还在
-- 第 1–3 件计数正确；同一件重复保存不重复计；第 4 件在开始前被拦；删除不退次数；演示解锁后可以继续
-- 存储已满时保存失败有提示，不计次
-- 输入名字时空格不触发吹气；窗口失焦时吹气停止；凉玻璃拒绝吹气并提示
-- 500 次随机大幅拉扯、NaN 和 Infinity 输入后，数据仍然有限且在范围内
-- 撤销、中英切换
-- 草稿：吹到一半刷新，形状、料色、纹样都恢复
-- Wind：用脚本模拟按住并移动指针，缠出约 90 圈、2359 个点的树；点 14 颗珠全部落上；星星可加可撤销；刷新后草稿恢复；定型流程走通。没有把缠丝作品实际保存到陈列架（为了不动你浏览器里已有的作品），保存用的打包和读回只是和吹制共用同一条路径
-- 作品卡片能生成（在页面里预览过，没有实际下载文件）
-
-没测过：
-
-- 真实的 MacBook 触控板手感（内置浏览器里只能模拟鼠标）
-- Petal：用脚本拉了 19 片（8 片外瓣、5 片内瓣、3 片花蕊、3 片叶子），撤销、草稿恢复、打包读回、定型都通过
-- 花的第二版：按真实灯工玻璃花的参考图改成圆而厚、带压痕的花瓣；拉花瓣时镜头自动抬高看花面；成品可上下拖动换角度；树干在有花瓣时变成绿色花茎并只留到花心。脚本拉了一朵五瓣花加花蕊和叶子，目视检查过
-- 树的第二版：对照 B 站视频「用玻璃做一棵拔丝圣诞树」（BV16M411X7Ze，逐帧看过）重调。脚本模拟按住 35 秒缠出约 4000 个点，再点 18 颗珠加星定型，目视和视频里的成品是同一种长相
-- 树的第三版（过程改对）：脚本模拟了三个阶段并各截图检查：空骨架 → 约 10 圈贴在骨架上 → 约 270 圈盖满并叠出层次。没有缠到料棒用完的上限
-- Wind 的手感：转速、丝的粘滞、粗细变化这些数值都是估的，没有真人试过
-- macOS Safari
-- 触控板捏合手势
-- 声音（内置浏览器里听不到）
-- 帧率：内置浏览器的面板是限速的，测不出真实数字
-- 手机和窄屏只写了样式，没看过
+| File | What it does |
+| --- | --- |
+| `src/model.js` | Piece data and shaping rules |
+| `src/stage.js` | The three.js scene, glass geometry and materials, the card export |
+| `src/main.js` | Workshop states, input and interface |
+| `src/coil.js` | Turns a path of points into a thin glass thread |
+| `src/store.js` | The shelf and the demo counter, in local storage |
+| `src/audio.js` | Three synthesised sounds: the flame, breath and a glass "tink" |
+| `src/i18n.js` | English and Chinese text |
+| `research/research.md` | Research notes on the craft and the design decisions |
+| `lab/coil.html` | A rendering experiment for the thread, not part of the studio |
