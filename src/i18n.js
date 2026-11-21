@@ -1,0 +1,148 @@
+// 界面文字。默认英文，右上角可切到中文。
+const STR = {
+  en: {
+    tagline: 'a little glass studio',
+    kind_label: 'What to make', kind_blow: 'Blow', kind_blow_sub: 'a vessel on the pipe', kind_tree: 'Tree', kind_tree_sub: 'wind threads on a frame', kind_flower: 'Flower', kind_flower_sub: 'pull petals on a stem',
+    tool_label: 'Tool', tool_thread: 'Thread', tool_petal: 'Petal', tool_dot: 'Dot', tool_star: 'Star',
+    body_pine: 'Pine', body_berry: 'Berry', body_ink: 'Ink',
+    c_w_start: 'The frame is your tree. Press and hold beside it, and the thread winds on at the height of your pointer.',
+    c_w_start_free: 'Press beside the stem and hold. The thread winds on wherever your pointer is.',
+    c_w_shape: 'Move slowly up and down. Each pass lays another layer; a few turns, then hundreds, then thousands.',
+    c_w_dot: 'Pick a colour, switch to Dot, and click the tree to add an ornament. Star tops it off.',
+    c_w_thick: 'The rod is cooling, so the thread comes out thicker. Reheat for hair-fine ones.',
+    c_w_flow: 'Change colour whenever you like. When you love it, knock it off.',
+    c_w_done: 'Cooled and standing. Drag sideways to turn it, up and down to look from above.',
+    c_w_petal: 'Press on the stem and drag outward to pull a petal. Drag upward for a cupped one. Let go and the stem turns for the next.',
+    c_w_petal_more: 'Five round the stem makes a flower. Then Dot the middle for its heart, and pull green ones lower down for leaves.',
+    n_w_petals_full: 'That’s as many petals as this stem can carry.',
+    c_w_heating: 'Rod in the flame…', c_w_cold: 'The rod has gone stiff. Hold Reheat to melt the tip again.',
+    n_cold_wind: 'The rod is too stiff to pull a thread. Hold Reheat first.',
+    n_w_full: 'This rod is used up. Add dots or a star, then knock it off.', n_w_dots_full: 'That’s as many dots as this tree can hold.',
+    sound_on: 'Sound on', sound_off: 'Sound off', shelf: 'Shelf', lang: '中文',
+    colour: 'colour', pattern: 'pattern',
+    body_clear: 'Clear', body_sea: 'Sea', body_amber: 'Amber', body_moss: 'Moss', body_rose: 'Rose', body_smoke: 'Smoke',
+    pat_plain: 'Plain', pat_frit: 'Frit', pat_swirl: 'Swirl',
+    zone_soft: 'runny', zone_work: 'just right', zone_stiff: 'too stiff',
+    heat: 'Reheat', blow: 'Blow', hold: 'hold', space: 'space',
+    undo: 'Undo', restart: 'Start over', finish: 'Knock off & cool',
+    name_label: 'Name it', name_ph: 'Friday night piece', save: 'Place on shelf', rework: 'Back to the flame',
+    export: 'Save as card', card_line: 'blown by hand at Gather · {date}', del: 'Delete', del_confirm: 'Tap again to delete', make_new: 'Make another',
+    shelf_title: 'The Shelf', close: 'Close',
+    shelf_note: 'Your pieces live in this browser on this computer. Clearing browser data clears the shelf.',
+    shelf_empty: 'Nothing here yet. Your first finished piece will sit right here.',
+    untitled: 'Untitled',
+    pay_title: 'You’ve made your 3 free pieces',
+    pay_body: 'Everything on your shelf is still yours to look at and rework. To start a new piece you’ll need a pack.',
+    pay_pack: 'Studio pack · 3 more pieces', pay_price: 'price to be decided',
+    pay_note: 'This is a demo. No real payment is connected. The button below only simulates an unlocked state. Nothing is charged.',
+    pay_cancel: 'Not now', pay_demo: 'Demo unlock (no payment)',
+    q_making: 'Piece No. {n}', q_free_left: '{n} free left', q_free_done: 'all 3 free pieces made', q_left: '{n} left in your pack', q_none: 'pack used up',
+    t_saved: '“{name}” is on the shelf.', t_updated: '“{name}” updated.',
+    t_full: 'Couldn’t save: this browser’s storage for the page is full. Delete a piece from the shelf and try again.',
+    t_blocked: 'Couldn’t save: the browser isn’t letting this page store data (private window?).',
+    t_deleted: '“{name}” deleted. Deleting doesn’t give a free piece back.',
+    t_del_fail: 'Couldn’t delete: the browser isn’t letting this page change its data.',
+    t_unlock: 'Demo unlock on. No payment happened.', t_unlock_fail: 'Demo unlock failed: the browser isn’t letting this page store data.',
+    shelf_cleared: 'Shelf is empty',
+    c_cooling: 'Knocked off the pipe, into the annealer to cool slowly…',
+    c_done: 'Cooled. Colours hide while the glass glows, and here they are. Drag to turn it.',
+    c_view: 'Drag to turn it around.',
+    c_heating: 'In the glory hole…', c_hot_enough: 'Hot enough. Any longer and it starts to droop.',
+    c_cold: 'The glass has gone stiff. Hold Reheat to soften it.',
+    c_limit: 'The wall is paper-thin. One more puff and it pops.',
+    c_sag: 'Too hot, it’s drooping. Shape it while it’s soft.',
+    c_blow: 'Hold space to blow. Watch it swell.',
+    c_pull: 'Press on the glass and drag: outward to belly it, inward to pinch a waist. Drag the base up or down to stretch.',
+    c_stiffening: 'Getting stiff. A quick reheat makes it easier.',
+    c_flow: 'Reheat as you go. When you love it, knock it off.',
+    n_cold_blow: 'Too stiff to blow. Hold Reheat first.', n_cold_pull: 'Too stiff to move. Hold Reheat first.', n_went_cold: 'It’s gone stiff. Back to the glory hole.',
+    fatal_offline: 'You’re offline. The 3D parts load from the web. Reconnect and refresh.',
+    fatal_gl: 'The 3D view couldn’t start. Open this in a current Chrome or Safari with hardware acceleration on.',
+    canvas_label: 'Your glass piece. Press on the glass and drag sideways to shape it.',
+    file_name: 'glass-piece',
+  },
+  zh: {
+    tagline: '一间小小的玻璃工作室',
+    kind_label: '做什么', kind_blow: '吹制', kind_blow_sub: '在吹管上吹一只瓶', kind_tree: '圣诞树', kind_tree_sub: '在骨架上缠丝', kind_flower: '花', kind_flower_sub: '在花茎上拉花瓣',
+    tool_label: '工具', tool_thread: '拉丝', tool_petal: '花瓣', tool_dot: '点珠', tool_star: '星星',
+    body_pine: '松绿', body_berry: '莓红', body_ink: '墨黑',
+    c_w_start: '骨架就是树的形状。在它旁边按住不放，丝会缠在指针所在的高度。',
+    c_w_start_free: '在树干旁边按住不放。指针在哪，丝就缠到哪。',
+    c_w_shape: '慢慢上下移动。每走一遍就多叠一层：几圈、几百圈、几千圈。',
+    c_w_dot: '选个颜色，换到「点珠」，在树上点一下就是一颗小果子。最后加颗星星。',
+    c_w_thick: '料棒在变凉，拉出来的丝会变粗。回炉再拉就是头发丝。',
+    c_w_flow: '随时可以换颜色。满意了就敲下定型。',
+    c_w_done: '凉透了，立住了。左右拖是转，上下拖是换个高度看。',
+    c_w_petal: '在花茎上按住往外拖，拉出一片花瓣；往上拖就是往上兜的。松手后花茎会自己转到下一片的位置。',
+    c_w_petal_more: '绕着拉五片就是一朵花。再用「点珠」在花心点一颗；换绿色在花茎低一点的地方拉，就是叶子。',
+    n_w_petals_full: '这根树干挂不下更多花瓣了。',
+    c_w_heating: '料棒在火里烧着……', c_w_cold: '料棒凉了，拉不出丝。按住「回炉」把头烧软。',
+    n_cold_wind: '料棒凉了，拉不出丝。先按住「回炉」。',
+    n_w_full: '这根料用完了。点几颗珠、加颗星，然后敲下定型。', n_w_dots_full: '这棵树点不下更多珠了。',
+    sound_on: '声音 开', sound_off: '声音 关', shelf: '陈列架', lang: 'EN',
+    colour: '料色', pattern: '纹样',
+    body_clear: '清料', body_sea: '海蓝', body_amber: '琥珀', body_moss: '苔绿', body_rose: '蔷薇', body_smoke: '烟紫',
+    pat_plain: '纯色', pat_frit: '碎料', pat_swirl: '螺旋',
+    zone_soft: '很软', zone_work: '好塑形', zone_stiff: '拉不动',
+    heat: '回炉', blow: '吹气', hold: '按住', space: '空格',
+    undo: '撤销', restart: '重新挑料', finish: '敲下定型',
+    name_label: '起个名字', name_ph: '周五晚上做的那件', save: '放上陈列架', rework: '回炉再改',
+    export: '存成卡片', card_line: '亲手吹制 · Gather · {date}', del: '删除', del_confirm: '再点一次，确认删除', make_new: '做一件新的',
+    shelf_title: '陈列架', close: '收起',
+    shelf_note: '作品存在这台电脑的这个浏览器里。清除浏览器数据会一起清掉。',
+    shelf_empty: '架子还空着。做完的第一件会放在这里。',
+    untitled: '未命名',
+    pay_title: '3 件免费作品已经做完',
+    pay_body: '已经上架的作品可以继续看、继续改。想做新的，需要一个次数包。',
+    pay_pack: '次数包 · 再做 3 件', pay_price: '价格待定',
+    pay_note: '这是演示版，没有接入任何真实付款。下面的按钮只模拟“已解锁”的状态，不会扣钱。',
+    pay_cancel: '先不了', pay_demo: '演示解锁（不付款）',
+    q_making: '第 {n} 件', q_free_left: '免费还剩 {n} 件', q_free_done: '3 件免费作品已做完', q_left: '次数包还剩 {n} 件', q_none: '次数用完了',
+    t_saved: '「{name}」放上陈列架了。', t_updated: '「{name}」已更新。',
+    t_full: '没存上：浏览器给这个网页的空间满了。删掉陈列架上的一件再试。',
+    t_blocked: '没存上：浏览器不允许这个网页保存数据（可能开着无痕模式）。',
+    t_deleted: '「{name}」已删除。删除不会退还次数。',
+    t_del_fail: '没删掉：浏览器不允许这个网页修改数据。',
+    t_unlock: '演示解锁成功，没有发生任何付款。', t_unlock_fail: '演示解锁没成功：浏览器不允许保存数据。',
+    shelf_cleared: '架子空了',
+    c_cooling: '敲下来，送进退火炉慢慢凉……',
+    c_done: '凉透了。热的时候看不出的颜色，现在出来了。拖动可以转着看。',
+    c_view: '拖动可以转着看。',
+    c_heating: '炉里烧着……', c_hot_enough: '够烫了，再烧料会往下坠。',
+    c_cold: '玻璃凉了，拉不动。按住「回炉」烧一烧。',
+    c_limit: '壁已经很薄，再吹就破了。',
+    c_sag: '太烫了，料在往下坠。趁软赶紧塑形。',
+    c_blow: '按住空格往里吹气，它会鼓起来。',
+    c_pull: '在玻璃上按住拖：往外是拉鼓，往里是收腰。抓着底部上下拖可以抻长。',
+    c_stiffening: '有点硬了，回炉一下更好拉。',
+    c_flow: '边做边回炉。满意了就敲下定型。',
+    n_cold_blow: '玻璃凉了，吹不动。先按住「回炉」。', n_cold_pull: '玻璃凉了，拉不动。先按住「回炉」。', n_went_cold: '凉了，动不了了。回炉再来。',
+    fatal_offline: '现在没有网络。3D 组件要联网加载，连上网后刷新页面。',
+    fatal_gl: '3D 画面没能启动。请用新版 Chrome 或 Safari 打开，并确认没有关闭硬件加速。',
+    canvas_label: '玻璃作品。在玻璃上按住并左右拖动来塑形。',
+    file_name: '玻璃作品',
+  },
+};
+
+const LANG_KEY = 'gather.lang';
+let lang = 'en';
+try { if (localStorage.getItem(LANG_KEY) === 'zh') lang = 'zh'; } catch { /* 读不到就用英文 */ }
+
+export function t(key, vars) {
+  let s = STR[lang][key] ?? STR.en[key] ?? key;
+  if (vars) for (const k of Object.keys(vars)) s = s.replace(`{${k}}`, vars[k]);
+  return s;
+}
+export function getLang() { return lang; }
+export function toggleLang() {
+  lang = lang === 'en' ? 'zh' : 'en';
+  try { localStorage.setItem(LANG_KEY, lang); } catch { /* 存不了也不影响本次切换 */ }
+  applyStatic();
+}
+// 把静态文字写进带 data-t / data-t-ph / data-t-label 的元素
+export function applyStatic() {
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  for (const el of document.querySelectorAll('[data-t]')) el.textContent = t(el.dataset.t);
+  for (const el of document.querySelectorAll('[data-t-ph]')) el.placeholder = t(el.dataset.tPh);
+  for (const el of document.querySelectorAll('[data-t-label]')) el.setAttribute('aria-label', t(el.dataset.tLabel));
+}

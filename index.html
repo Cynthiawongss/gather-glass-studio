@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gather</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<canvas id="stage" data-t-label="canvas_label"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="brand">
+    <h1>Gather</h1>
+    <p class="tagline" data-t="tagline"></p>
+    <p id="quota" class="quota"></p>
+  </div>
+  <div class="top-actions">
+    <button id="langBtn" class="pill" type="button" data-t="lang"></button>
+    <button id="soundBtn" class="pill" type="button" aria-pressed="true"></button>
+    <button id="shelfBtn" class="pill" type="button"><span data-t="shelf"></span> <span id="shelfCount" class="count">0</span></button>
+  </div>
+</header>
+
+<nav class="kinds pill-group" id="kinds" role="radiogroup" data-t-label="kind_label">
+  <button id="kind_blow" type="button" role="radio"><b data-t="kind_blow"></b><i data-t="kind_blow_sub"></i></button>
+  <button id="kind_tree" type="button" role="radio"><b data-t="kind_tree"></b><i data-t="kind_tree_sub"></i></button>
+  <button id="kind_flower" type="button" role="radio"><b data-t="kind_flower"></b><i data-t="kind_flower_sub"></i></button>
+</nav>
+
+<aside class="tray card" id="tray">
+  <h2 data-t="colour"></h2>
+  <div class="swatches" id="bodies" role="radiogroup" data-t-label="colour"></div>
+  <div class="only-blow">
+    <h2 data-t="pattern"></h2>
+    <div class="chips" id="patterns" role="radiogroup" data-t-label="pattern"></div>
+  </div>
+</aside>
+
+<aside class="thermo card" id="thermo">
+  <div class="thermo-read"><span id="tempNum">1030</span><small>°C</small></div>
+  <div class="thermo-body">
+    <div class="thermo-bar"><div class="thermo-mark" id="tempMark"></div></div>
+    <ul class="zones">
+      <li class="zone-soft" data-t="zone_soft"></li>
+      <li class="zone-work" data-t="zone_work"></li>
+      <li class="zone-stiff" data-t="zone_stiff"></li>
+    </ul>
+  </div>
+</aside>
+
+<footer class="dock" id="dock">
+  <p class="coach" id="coach" aria-live="polite"></p>
+
+  <div class="controls" id="workControls">
+    <button id="heatBtn" class="hold" type="button"><b data-t="heat"></b><span class="keys"><kbd>F</kbd><i data-t="hold"></i></span></button>
+    <button id="blowBtn" class="hold only-blow" type="button"><b data-t="blow"></b><span class="keys"><kbd data-t="space"></kbd><i data-t="hold"></i></span></button>
+    <span class="seg only-wind" role="radiogroup" data-t-label="tool_label">
+      <button id="toolThread" class="only-tree" type="button" role="radio" data-t="tool_thread"></button>
+      <button id="toolPetal" class="only-flower" type="button" role="radio" data-t="tool_petal"></button>
+      <button id="toolDot" type="button" role="radio" data-t="tool_dot"></button>
+    </span>
+    <button id="starBtn" class="plain only-tree" type="button" aria-pressed="false" data-t="tool_star"></button>
+    <span class="sep"></span>
+    <button id="undoBtn" class="plain" type="button" disabled><span data-t="undo"></span> <kbd>⌘Z</kbd></button>
+    <button id="restartBtn" class="plain" type="button" data-t="restart"></button>
+    <span class="sep"></span>
+    <button id="finishBtn" class="primary" type="button" data-t="finish"></button>
+  </div>
+
+  <form class="controls" id="doneControls" hidden>
+    <label for="nameInput" data-t="name_label"></label>
+    <input id="nameInput" name="name" type="text" maxlength="24" autocomplete="off" data-t-ph="name_ph">
+    <button id="saveBtn" class="primary" type="submit" data-t="save"></button>
+    <button id="reworkBtn" class="plain" type="button" data-t="rework"></button>
+  </form>
+
+  <div class="controls" id="viewControls" hidden>
+    <strong id="viewName" class="view-name"></strong>
+    <span class="sep"></span>
+    <button id="editBtn" class="plain" type="button" data-t="rework"></button>
+    <button id="exportBtn" class="plain" type="button" data-t="export"></button>
+    <button id="deleteBtn" class="plain danger" type="button" data-t="del"></button>
+    <span class="sep"></span>
+    <button id="newBtn" class="primary" type="button" data-t="make_new"></button>
+  </div>
+</footer>
+
+<section class="shelf" id="shelf" hidden data-t-label="shelf_title">
+  <header>
+    <h2 data-t="shelf_title"></h2>
+    <button id="shelfClose" class="pill" type="button" data-t="close"></button>
+  </header>
+  <p class="shelf-note" data-t="shelf_note"></p>
+  <ul id="shelfList"></ul>
+  <p id="shelfEmpty" class="shelf-empty" data-t="shelf_empty"></p>
+</section>
+
+<dialog id="payDialog">
+  <h2 data-t="pay_title"></h2>
+  <p data-t="pay_body"></p>
+  <div class="pack">
+    <strong data-t="pay_pack"></strong>
+    <span data-t="pay_price"></span>
+  </div>
+  <p class="demo-note" data-t="pay_note"></p>
+  <div class="dialog-actions">
+    <button id="payCancel" class="plain" type="button" data-t="pay_cancel"></button>
+    <button id="payDemo" class="primary" type="button" data-t="pay_demo"></button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="fatal" id="fatal" hidden></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
